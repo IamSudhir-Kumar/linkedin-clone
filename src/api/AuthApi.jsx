@@ -1,4 +1,5 @@
-import { signInWithEmailAndPassword , createUserWithEmailAndPassword} from 'firebase/auth'
+import { signInWithEmailAndPassword , createUserWithEmailAndPassword ,
+GoogleAuthProvider , signInWithPopup} from 'firebase/auth'
 import { auth } from "../FireBaseConfig";
 
 export const LogInAPI = (email , password) => {
@@ -17,3 +18,13 @@ export const RegisterAPI = (email , password) => {
         return err;
     }
 };
+export const GoogleSignInAPI = () => {
+    try{
+   let googleProvider = new GoogleAuthProvider()
+   let response = signInWithPopup(auth, googleProvider)
+    return response;
+    } catch (err) {
+        return err;
+    }
+};
+
