@@ -1,9 +1,12 @@
 import { LogInAPI, GoogleSignInAPI } from "../api/AuthApi"
+import loginBg from "../assets/loginBg.jpg"
 import { useState } from "react";
 import GoogleButton from 'react-google-button'
 import { toast } from 'react-toastify';
+import { useNavigate } from "react-router-dom";
 export default function LogInPageComponent() {
-  const backgroundImageUrl = "https://images.unsplash.com/photo-1565728744382-61accd4aa148?auto=format&fit=crop&q=80&w=2073&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  let navigate = useNavigate();
+  const backgroundImageUrl = loginBg;
   const [credentails, setCredentails] = useState({})
   const login = async () => {
     try {
@@ -14,6 +17,11 @@ export default function LogInPageComponent() {
       toast.error("Login Failed");
     }
   };
+
+  const googleSignin = () => {
+let response = GoogleSignInAPI()  
+console.log(response)
+  }
 
   return (
     <>
@@ -58,12 +66,12 @@ export default function LogInPageComponent() {
                 <button type="button" className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2" onClick={login}>Log In</button>
                
                 <p className="text-sm font-light text-gray-500 dark:text-gray-400">
-                  Don’t have an account yet? <a href="#" className="font-medium text-primary-600 hover:underline dark:text-primary-500">Sign up</a>
+                  Don’t have an account yet? <a href="" className="font-medium text-primary-600 hover:underline dark:text-primary-500" onClick={() => navigate('/register')}>Sign up</a>
                 </p>
               </form>
               <div id="google-button">
                   <GoogleButton
-                    onClick={() => { console.log('Google button clicked') }}
+                    onClick={googleSignin}
                   />
                 </div>
             </div>
