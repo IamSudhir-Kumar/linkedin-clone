@@ -12,6 +12,7 @@ export default function LogInPageComponent() {
     try {
       let res = await LogInAPI(credentails.email, credentails.password)
       toast.success("Login Successfull");
+      navigate('/home')
     } catch (err) {
       console.log(err);
       toast.error("Login Failed");
@@ -19,16 +20,16 @@ export default function LogInPageComponent() {
   };
 
   const googleSignin = () => {
-let response = GoogleSignInAPI()  
-console.log(response)
+    let response = GoogleSignInAPI();
+    navigate('/home');
   }
 
   return (
     <>
       <section className="bg-gray-50"
         style={{
-          backgroundImage: `url(${backgroundImageUrl})`, // Apply the online background image URL
-          backgroundSize: "cover", // Adjust background size as needed
+          backgroundImage: `url(${backgroundImageUrl})`,
+          backgroundSize: "cover",
           backgroundPosition: "center",
           minHeight: "100vh"
         }}>
@@ -63,17 +64,17 @@ console.log(response)
                   </div> */}
                   <a href="#" className="text-sm font-medium text-white hover:underline dark:text-primary-500">Forgot password?</a>
                 </div>
-                <button type="button" className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2" onClick={login}>Log In</button>
-               
+                <button type="button" className="w-full text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2" onClick={login}>Log In</button>
+
                 <p className="text-sm font-light text-gray-500 dark:text-gray-400">
                   Don’t have an account yet? <a href="" className="font-medium text-primary-600 hover:underline dark:text-primary-500" onClick={() => navigate('/register')}>Sign up</a>
                 </p>
               </form>
               <div id="google-button">
-                  <GoogleButton
-                    onClick={googleSignin}
-                  />
-                </div>
+                <GoogleButton 
+                  onClick={googleSignin}
+                />
+              </div>
             </div>
           </div>
         </div>
