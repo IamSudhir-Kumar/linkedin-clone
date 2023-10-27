@@ -1,10 +1,9 @@
-import React from 'react'
-import Navbar from '../Components/Common/Navbar'
+import PostStatus from "./Common/PostStatus"
 
 export default function HomePageComponent() {
   return (
     <>
-     <h1>Home Page Component</h1>
+   <PostStatus />
     </>
   )
 }
