@@ -3,18 +3,27 @@ import ModalComponent from './Modal';
 import { getStatus, postStatus } from '../../api/FireStore';
 import { useState, useMemo } from 'react';
 import PostCard from './PostCard';
+import { getCurrentTimeStamp } from '../../helpers/useMoment';
 const PostStatus = () => {
+  let userEmail = localStorage.getItem('userEmail');
   const [modalOpen, setModalOpen] = useState(false);
   const [status, setStatus] = useState('');
   const [allStatus, setAllStatus] = useState([]);
   const sendStatus = async () => {
-    await postStatus(status);
+    let object = {
+      status: status,
+      timeStamp: getCurrentTimeStamp('lll'),
+      userEmail:userEmail
+    }
+    await postStatus(object);
     await setModalOpen(false);
     await setStatus(" ");
   };
+  console.log(getCurrentTimeStamp('lll'));
   useMemo(() => {
     getStatus(setAllStatus);
   }, []);
+
   return (
     <div>
       <div className="flex items-center justify-center">

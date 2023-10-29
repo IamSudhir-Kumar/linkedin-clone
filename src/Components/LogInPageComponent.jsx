@@ -12,6 +12,7 @@ export default function LogInPageComponent() {
     try {
       let res = await LogInAPI(credentails.email, credentails.password)
       toast.success("Login Successfull");
+      localStorage.setItem("userEmail", res.user.email)
       navigate('/home')
     } catch (err) {
       console.log(err);
