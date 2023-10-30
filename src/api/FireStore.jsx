@@ -24,12 +24,12 @@ export const getStatus = (setAllStatus) => {
     });
 };
 
-export const getUserName = (setUserName) => {
-   addDoc(usersName, (response) => {
-        setUserName(
-            response.docs.map((doc) => {
-                return { ...doc.data(), id: doc.id };
-            })
-        );
-    });
+export const getUserName = (userObject) => {
+    addDoc(usersName, userObject)
+        .then((docRef) => {
+            console.log('User name added successfully.');
+        })
+        .catch((error) => {
+            console.error('Error adding user name: ', error);
+        });
 };

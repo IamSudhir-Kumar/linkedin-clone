@@ -22,7 +22,7 @@ export default function PostCard({ posts }) {
 
   return (
     <div className="max-w-auto  min-h-auto bg-white mt-3 mb-5 border-2 border-gray-300 rounded-lg text-ellipsis overflow-hidden">
-      <p className="text-sm mt-3 ml-2 text-gray-600 font-normal m-0">
+      <p className="text-sm mt-3 ml-2 mr-2 text-gray-600 font-normal m-0">
         {posts.timeStamp}
       </p>
       <div className="m-2 mb-4 text-base font-normal text-opacity-90 text-black text-ellipsis overflow-hidden flex flex-col">
